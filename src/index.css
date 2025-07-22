@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  body {
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+@layer components {
+  /* Aroma GC Glass Effects */
+  .glass-effect {
+    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-glass;
+  }
+  
+  .glass-dark {
+    @apply bg-neutral-900/80 backdrop-blur-md border border-neutral-700/20 shadow-glass;
+  }
+
+  .glass-card {
+    @apply bg-white/60 backdrop-blur-lg border border-white/30 shadow-glass-lg rounded-2xl;
+  }
+  
+  /* Aroma GC Badge System */
+  .badge-success {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-success-100 text-success-700 border border-success-200;
+  }
+  
+  .badge-warning {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-warning-100 text-warning-700 border border-warning-200;
+  }
+  
+  .badge-danger {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-danger-100 text-danger-700 border border-danger-200;
+  }
+  
+  .badge-info {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-info-100 text-info-700 border border-info-200;
+  }
+
+  .badge-neutral {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-neutral-100 text-neutral-700 border border-neutral-200;
+  }
+
+  /* Aroma GC Button System */
+  .btn-primary {
+    @apply px-4 py-2 bg-aroma-600 text-white rounded-xl hover:bg-aroma-700 transition-all duration-200 font-medium shadow-lg hover:shadow-xl;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 bg-neutral-100 text-neutral-700 rounded-xl hover:bg-neutral-200 transition-all duration-200 font-medium;
+  }
+
+  .btn-success {
+    @apply px-4 py-2 bg-success-600 text-white rounded-xl hover:bg-success-700 transition-all duration-200 font-medium shadow-lg hover:shadow-xl;
+  }
+
+  .btn-warning {
+    @apply px-4 py-2 bg-warning-600 text-white rounded-xl hover:bg-warning-700 transition-all duration-200 font-medium shadow-lg hover:shadow-xl;
+  }
+
+  .btn-danger {
+    @apply px-4 py-2 bg-danger-600 text-white rounded-xl hover:bg-danger-700 transition-all duration-200 font-medium shadow-lg hover:shadow-xl;
+  }
+
+  /* Aroma GC Input System */
+  .input-primary {
+    @apply w-full px-4 py-3 border border-neutral-300 rounded-xl focus:ring-2 focus:ring-aroma-500 focus:border-transparent transition-all duration-200 bg-white/80 backdrop-blur-sm;
+  }
+
+  .input-error {
+    @apply w-full px-4 py-3 border border-danger-300 rounded-xl focus:ring-2 focus:ring-danger-500 focus:border-transparent transition-all duration-200 bg-white/80 backdrop-blur-sm;
+  }
+
+  /* Timeline specific styles */
+  .timeline-line {
+    @apply absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-aroma-400 to-aroma-600;
+  }
+
+  .timeline-node {
+    @apply w-12 h-12 rounded-full flex items-center justify-center shadow-lg border-4 border-white;
+  }
+
+  .timeline-node-primary {
+    @apply timeline-node bg-gradient-to-r from-aroma-500 to-aroma-600;
+  }
+
+  .timeline-node-success {
+    @apply timeline-node bg-gradient-to-r from-success-500 to-success-600;
+  }
+
+  .timeline-node-warning {
+    @apply timeline-node bg-gradient-to-r from-warning-500 to-warning-600;
+  }
+
+  .timeline-node-info {
+    @apply timeline-node bg-gradient-to-r from-info-500 to-info-600;
+  }
+}
