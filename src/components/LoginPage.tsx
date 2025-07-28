@@ -36,6 +36,18 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
         department: 'Tecnologia da Informação',
         tag: 'JOAO.SILVA'
       }
+    },
+    desenvolvedor: {
+      password: 'dev123',
+      user: {
+        id: 'dev1',
+        username: 'desenvolvedor',
+        name: 'Carlos Souza',
+        email: 'carlos.souza@grancoffee.com',
+        role: 'desenvolvedor' as const,
+        department: 'Desenvolvimento',
+        tag: 'CARLOS.SOUZA'
+      }
     }
   };
 
@@ -165,6 +177,11 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
               <p className="font-medium text-green-800">Colaborador:</p>
               <p className="text-green-700">Usuário: <span className="font-mono bg-green-200 px-2 py-1 rounded">colaborador</span></p>
               <p className="text-green-700">Senha: <span className="font-mono bg-green-200 px-2 py-1 rounded">senha123</span></p>
+            </div>
+            <div className="bg-white p-3 rounded-lg">
+              <p className="font-medium text-blue-800">Desenvolvedor:</p>
+              <p className="text-blue-700">Usuário: <span className="font-mono bg-blue-200 px-2 py-1 rounded">desenvolvedor</span></p>
+              <p className="text-blue-700">Senha: <span className="font-mono bg-blue-200 px-2 py-1 rounded">dev123</span></p>
             </div>
           </div>
         </div>

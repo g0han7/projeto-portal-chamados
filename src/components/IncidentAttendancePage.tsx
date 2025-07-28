@@ -164,6 +164,7 @@ const IncidentAttendancePage: React.FC<IncidentAttendancePageProps> = ({
   const handleFinalize = () => {
     if (incident) {
       updateIncident(incidentId, {
+        ...localIncident,
         status: 'Finalizado',
         timerDuration: Math.floor(timerSeconds / 60),
         treatments: treatments
@@ -176,6 +177,7 @@ const IncidentAttendancePage: React.FC<IncidentAttendancePageProps> = ({
   const handleCancel = () => {
     if (incident) {
       updateIncident(incidentId, {
+        ...localIncident,
         status: 'Cancelado',
         timerDuration: Math.floor(timerSeconds / 60),
         treatments: treatments
@@ -198,26 +200,12 @@ const IncidentAttendancePage: React.FC<IncidentAttendancePageProps> = ({
 
     setTreatments(prev => [...prev, newTreatment]);
     
-    // Update the incident with the new treatment
-    if (localIncident.isPublicTreatment) {
-      setLocalIncident(prev => ({ 
-        ...prev, 
-        additionalComments: prev.additionalComments ? 
-          `${prev.additionalComments}\n\n[${new Date().toLocaleString('pt-BR')}] ${newTreatment.content}` : 
-          `[${new Date().toLocaleString('pt-BR')}] ${newTreatment.content}`,
-        newTreatment: '', 
-        isPublicTreatment: false 
-      }));
-    } else {
-      setLocalIncident(prev => ({ 
-        ...prev, 
-        workNotes: prev.workNotes ? 
-          `${prev.workNotes}\n\n[${new Date().toLocaleString('pt-BR')}] ${newTreatment.content}` : 
-          `[${new Date().toLocaleString('pt-BR')}] ${newTreatment.content}`,
-        newTreatment: '', 
-        isPublicTreatment: false 
-      }));
-    }
+    // Apenas limpa o formulário
+    setLocalIncident(prev => ({ 
+      ...prev, 
+      newTreatment: '', 
+      isPublicTreatment: false 
+    }));
   };
 
   const getRelatedArticles = () => {

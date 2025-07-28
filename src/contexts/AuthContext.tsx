@@ -5,7 +5,7 @@ export interface User {
   username: string;
   name: string;
   email: string;
-  role: 'colaborador' | 'atendente';
+  role: 'colaborador' | 'atendente' | 'desenvolvedor';
   department?: string;
   tag?: string;
   superior?: string;

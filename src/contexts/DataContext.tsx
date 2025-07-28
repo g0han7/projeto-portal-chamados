@@ -29,6 +29,33 @@ export interface Incident {
   }>;
 }
 
+export interface Project {
+  id: string;
+  projectNumber: string;
+  requestedFor: string;
+  status: string;
+  priority: string;
+  assignedGroup: string;
+  assignedTo: string;
+  description: string;
+  workNotes: string;
+  additionalComments: string;
+  conclusion: string;
+  timerDuration: number;
+  lastUpdated: string;
+  openedBy: string;
+  type: string;
+  impact: string;
+  createdAt: string;
+  treatments?: Array<{
+    id: string;
+    content: string;
+    isPublic: boolean;
+    author: string;
+    timestamp: string;
+  }>;
+}
+
 export interface UserDetail {
   id: string;
   tag: string;
@@ -48,10 +75,13 @@ export interface KnowledgeArticle {
 
 interface DataContextType {
   incidents: Incident[];
+  projects: Project[];
   userDetails: UserDetail[];
   knowledgeArticles: KnowledgeArticle[];
   updateIncident: (id: string, updates: Partial<Incident>) => void;
   addIncident: (incident: Incident) => void;
+  updateProject: (id: string, updates: Partial<Project>) => void;
+  addProject: (project: Project) => void;
   getUserDetail: (name: string) => UserDetail | undefined;
   searchKnowledge: (query: string) => KnowledgeArticle[];
 }
@@ -72,6 +102,7 @@ interface DataProviderProps {
 
 export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   const [incidents, setIncidents] = useState<Incident[]>(exampleIncidents);
+  const [projects, setProjects] = useState<Project[]>([]);
   const [userDetails] = useState<UserDetail[]>(mockUserDetails);
   const [knowledgeArticles] = useState<KnowledgeArticle[]>(knowledgeBaseArticles);
 
@@ -87,6 +118,20 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
 
   const addIncident = (incident: Incident) => {
     setIncidents(prev => [...prev, incident]);
+  };
+
+  const updateProject = (id: string, updates: Partial<Project>) => {
+    setProjects(prev => 
+      prev.map(project => 
+        project.id === id 
+          ? { ...project, ...updates, lastUpdated: new Date().toISOString() }
+          : project
+      )
+    );
+  };
+
+  const addProject = (project: Project) => {
+    setProjects(prev => [...prev, project]);
   };
 
   const getUserDetail = (name: string) => {
@@ -108,10 +153,13 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   return (
     <DataContext.Provider value={{
       incidents,
+      projects,
       userDetails,
       knowledgeArticles,
       updateIncident,
       addIncident,
+      updateProject,
+      addProject,
       getUserDetail,
       searchKnowledge
     }}>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import LoginPage from './components/LoginPage';
 import CollaboratorPortal from './components/CollaboratorPortal';
 import AttendantPortal from './components/AttendantPortal';
+import ProjectPortal from './components/ProjectPortal';
 import { User, AuthProvider } from './contexts/AuthContext';
 import { DataProvider } from './contexts/DataContext';
 
@@ -47,6 +48,8 @@ function App() {
             <LoginPage onLogin={handleLogin} />
           ) : currentUser.role === 'colaborador' ? (
             <CollaboratorPortal user={currentUser} onLogout={handleLogout} />
+          ) : currentUser.role === 'desenvolvedor' ? (
+            <ProjectPortal user={currentUser} onLogout={handleLogout} />
           ) : (
             <AttendantPortal user={currentUser} onLogout={handleLogout} />
           )}
